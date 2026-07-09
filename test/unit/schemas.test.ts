@@ -67,6 +67,7 @@ describe("TaskSummary schema", () => {
     dueDate: null,
     deferDate: null,
     plannedDate: null,
+    completionDate: null,
     tagIds: [],
   };
 

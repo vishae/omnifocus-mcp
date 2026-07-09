@@ -50,7 +50,7 @@ export async function listTasksHandler(
 export const listTasksTool = {
   name: "list_tasks",
   description:
-    "List tasks in OmniFocus within a scope. Provide exactly one of: projectId (tasks in a project), folderId (tasks across all projects in a folder), inbox (inbox tasks), or all (every task). By default, complete and dropped tasks are excluded — pass filter.status to override. Optional filter fields: flagged (boolean), status (array of status strings), tagId (string), dueBeforeDate (ISO datetime). Results are capped at limit (default 200). Each returned task includes dueDate and tagIds.",
+    "List tasks in OmniFocus within a scope. Provide exactly one of: projectId (tasks in a project), folderId (tasks across all projects in a folder), inbox (inbox tasks), or all (every task). By default, complete and dropped tasks are excluded — pass filter.status to override. Optional filter fields: flagged (boolean), status (array of status strings), tagId (string), dueBeforeDate (ISO datetime), hasDeferDate (boolean), completedAfter (ISO datetime, narrows to tasks completed at or after this timestamp). Results are capped at limit (default 200). Each returned task includes dueDate, deferDate, plannedDate, completionDate, containerId/containerType, and tagIds.",
   inputSchema: listTasksSchema,
   handler: listTasksHandler,
 } as const;

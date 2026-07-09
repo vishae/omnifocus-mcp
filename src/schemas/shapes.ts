@@ -41,6 +41,7 @@ export const TaskSummary = z.object({
   dueDate: z.string().datetime().nullable(),
   deferDate: z.string().datetime().nullable(),
   plannedDate: z.string().datetime().nullable(),
+  completionDate: z.string().datetime().nullable(),
   tagIds: z.array(IdSchema),
 });
 
@@ -50,6 +51,7 @@ export const ListTasksFilter = z.object({
   tagId: IdSchema.optional(),
   dueBeforeDate: z.string().datetime().optional(),
   hasDeferDate: z.literal(true).optional().describe("Return only tasks that have a defer date set"),
+  completedAfter: z.string().datetime().optional().describe("Return only tasks completed at or after this timestamp"),
 });
 
 export const TaskDetail = z.object({

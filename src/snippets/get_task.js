@@ -29,12 +29,16 @@
   }
 
   function containerInfo(task) {
-    if (!task.assignedContainer) return { containerId: null, containerType: null };
-    const c = task.assignedContainer;
-    if (c instanceof Project) {
-      return { containerId: c.id.primaryKey, containerType: "project" };
+    // Use parentTask and containingProject rather than assignedContainer —
+    // assignedContainer reflects original placement and doesn't update after moveTasks,
+    // and comes back null for completed tasks.
+    if (task.parentTask) {
+      return { containerId: task.parentTask.id.primaryKey, containerType: "task" };
     }
-    return { containerId: c.id.primaryKey, containerType: "task" };
+    if (task.containingProject) {
+      return { containerId: task.containingProject.id.primaryKey, containerType: "project" };
+    }
+    return { containerId: null, containerType: null };
   }
 
   function parseMethod(method) {
