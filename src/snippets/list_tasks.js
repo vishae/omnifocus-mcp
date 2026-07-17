@@ -54,7 +54,7 @@
       dueDate: task.dueDate ? task.dueDate.toISOString() : null,
       deferDate: task.deferDate ? task.deferDate.toISOString() : null,
       plannedDate: task.plannedDate ? task.plannedDate.toISOString() : null,
-      completionDate: task.completionDate ? task.completionDate.toISOString() : null,
+      completionDate: task.effectiveCompletedDate ? task.effectiveCompletedDate.toISOString() : null,
       dropDate: task.effectiveDropDate ? task.effectiveDropDate.toISOString() : null,
       tagIds: (task.tags || []).map(function(t) { return t.id.primaryKey; }),
     };

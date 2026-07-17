@@ -66,7 +66,7 @@
       deferDate: isoOrNull(task.deferDate),
       plannedDate: isoOrNull(task.plannedDate),
       dueDate: isoOrNull(task.dueDate),
-      completionDate: isoOrNull(task.completionDate),
+      completionDate: isoOrNull(task.effectiveCompletedDate),
       dropDate: isoOrNull(task.effectiveDropDate),
       estimatedMinutes: task.estimatedMinutes || null,
       containerId: containerId,
