@@ -55,6 +55,7 @@
       deferDate: task.deferDate ? task.deferDate.toISOString() : null,
       plannedDate: task.plannedDate ? task.plannedDate.toISOString() : null,
       completionDate: task.completionDate ? task.completionDate.toISOString() : null,
+      dropDate: task.effectiveDropDate ? task.effectiveDropDate.toISOString() : null,
       tagIds: (task.tags || []).map(function(t) { return t.id.primaryKey; }),
     };
   }
@@ -131,6 +132,13 @@
     var completedCutoff = new Date(filter.completedAfter);
     tasks = tasks.filter(function(t) {
       return t.completionDate !== null && new Date(t.completionDate) >= completedCutoff;
+    });
+  }
+
+  if (filter.droppedAfter) {
+    var droppedCutoff = new Date(filter.droppedAfter);
+    tasks = tasks.filter(function(t) {
+      return t.dropDate !== null && new Date(t.dropDate) >= droppedCutoff;
     });
   }
 
